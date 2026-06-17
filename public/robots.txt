@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /$
+Allow: /sobre
+Allow: /blog
+Disallow: /home
+Disallow: /login
+Disallow: /cadastro
+Disallow: /recuperar-senha
+Disallow: /api
+
+Sitemap: https://maisclinical.com.br/sitemap.xml

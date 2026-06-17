@@ -1,0 +1,47 @@
+// app-desktop.scss
+
+// 1. Reset estrutural para garantir que a casca ocupe a tela inteira
+:host {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden; // Previne scroll duplo no root
+  background-color: #f4f7f6;
+}
+
+// 2. A Barra Lateral (Sidebar)
+.desktop-sidebar {
+  // flex: grow shrink basis
+  // 0: Não cresce
+  // 0: Não encolhe (não esmaga os ícones se a tela diminuir)
+  // 15%: Ocupa 15% da tela, mas com limites estritos abaixo
+  flex: 0 0 15%;
+  min-width: 240px; // Barreira de contenção mínima
+  max-width: 320px; // Barreira de contenção máxima
+
+  background-color: #1a2b3c;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+// 3. A Área de Conteúdo Principal
+.desktop-main-content {
+  flex: 1; // Ocupa magicamente todo o % restante da tela
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto; // O scroll acontece APENAS no conteúdo, a sidebar fica fixa
+  padding: clamp(1rem, 2vw, 3rem); // Padding fluido: no mínimo 1rem, no máximo 3rem
+}
+
+// 4. O Contêiner de Negócio (Onde entra o <router-outlet>)
+.content-wrapper {
+  width: 100%;
+  max-width: 1400px; // O SEGREDO: Em monitores ultrawide, o conteúdo para de crescer aqui
+  margin: 0 auto; // Centraliza o contêiner se a tela for maior que 1400px
+
+  // Elementos internos fluem usando Flexbox
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
